@@ -22,8 +22,9 @@ export class RestaurantInput extends Component {
   }
 
   handleOnSubmit = event => {
+    debugger
     event.preventDefault();
-    // add missing code
+    this.props.addRestaurant(this.state)
   }
 
   render() {
@@ -50,5 +51,11 @@ export class RestaurantInput extends Component {
 };
 
 
-//connect this component by wrapping RestaurantInput below
-export default RestaurantInput
+const mapDispatchToProps = dispatch => {
+  return{
+    addRestaurant: (restaurant) => {dispatch(addRestaurant(restaurant))}
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(RestaurantInput);
